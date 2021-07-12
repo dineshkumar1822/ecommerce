@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>E-Cart</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <!-- section header 1st start.... -->
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="section-head">
+                    <h2>Products <button data-toggle="modal" data-target="#myModal">Add
+                            Products</button></h2>
+
+                    <button data-toggle="modal" id="editModelViewBtn" class="d-none" data-target="#editModal">Add
+                        Products</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end header section -->
+
+    <div class="container">
+        <div class="row">
+            <!-- Left Menu -->
+            <div class="col-12 col-sm-3 col-md-3">
+                <div class="left-menu">
+                    <b>Categories</b>
+                    <div class="menu-list" id="category-list">
+
+                    </div>
+
+                    <p>Filter by Price:</p>
+                    <input type="range" min="0" onchange="changePrice()"  class="slider" id="priceRange">
+                    <button>filter</button><span class="float-right py-3">price $0-$<span id="priceMax"></span></span>
+                    <h3>Top product </h3>
+                    <div class="left-menu-2 my-5" id="top-products">
+                    </div>
+
+                </div>
+
+
+            </div>
+
+            <!-- Right Section -->
+            <div class="col-12 col-sm-9 col-md-9">
+                <div class="product-list">
+                    <p>Showing 1-<span id="product-total"> </span> results
+                        <select id="sortingRange" onchange="sortProduct()">
+                            <option value="default">Default sorting</option>
+                            <option value="low">Low to high</option>
+                            <option value="high">High to low</option>
+                        </select>
+                    </p>
+                    <div id="product-item" class="row">
+                    </div>
+                    <ul class="pagination justify-content-center" id="pagination">
+                        <!-- <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                        </li> -->
+
+
+                        <!-- <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </li> -->
+                    </ul>
+
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    <!-- The Modal -->
+    <div class="modal" id="myModal">
+
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+
+                <div class="mx-5 mt-5 mb-3">
+
+                    <h3 class="text-center">
+                        Add Product </h3>
+
+                    <button class="popup-close-btn" data-dismiss="modal">
+                        X
+                    </button>
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">Product category</label>
+                        <select class="form-control" id="categoryListSelect">
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="input-product-name">Product title</label>
+                        <input type="text" class="form-control btn-light" id="input-product-name"
+                            aria-describedby="emailHelp" placeholder="enter product title">
+                        <sub id="error-msg-title" class="text-danger"></sub>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Price</label>
+                        <input type="number" class="form-control btn-light" id="input-product-price"
+                            aria-describedby="emailHelp" placeholder="Enter price">
+                        <sub id="error-msg-price" class="text-danger"></sub>
+                        <br>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="topProduct">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                Top Product
+                            </label>
+                        </div>
+                        <br>
+                        <label for="exampleInputEmail1">Upload product image</label><br>
+                        <input type="file" class="d-none" id="input-product-file" onchange="getFileName()"
+                            name="filename">
+                        <sub id="error-msg-file" class="text-danger"></sub>
+
+                        <p class="text-info" id="fileName"></p>
+                        <button class="btn btn-outline-danger btn-sm" onclick="uploadBtn()">Upload</button>
+                    </div>
+                    <p id="errormsg" class="text-center text-primary"></p>
+                    <hr>
+                    <div class="text-center">
+                        <button type="button" onclick="addProduct()" class="btn btn-light mx-4">OK</button>
+                        <button id="cancelBtn" type="button" class="btn btn-danger mx-4"
+                            data-dismiss="modal">Cancel</button>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+
+    <!-- Edit Product -->
+
+    <div class="modal" id="editModal">
+
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+
+                <div class="mx-5 mt-5 mb-3">
+
+                    <h3 class="text-center">
+                        Edit Product </h3>
+
+                    <button class="popup-close-btn" data-dismiss="modal">
+                        X
+                    </button>
+                    <div class="form-group">
+                        <label for="exampleFormControlSelectEdit">Product category</label>
+                        <select class="form-control" id="categoryListSelectEdit">
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="input-product-name">Product title</label>
+                        <input type="text" class="form-control btn-light" id="edit-product-name"
+                            aria-describedby="emailHelp" placeholder="enter product title">
+                        <sub id="error-msg-title" class="text-danger"></sub>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Price</label>
+                        <input type="number" class="form-control btn-light" id="edit-product-price"
+                            aria-describedby="emailHelp" placeholder="Enter price ">
+                        <sub id="error-msg-price" class="text-danger"></sub>
+                        <br>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="editTopProduct">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                Top Product
+                            </label>
+                        </div>
+                        <br>
+                        <label for="exampleInputEmail1">Upload product image</label><br>
+                        <input type="file" class="d-none" id="edit-product-file" onchange="getEditFileName()"
+                            name="editFilename">
+                        <sub id="error-msg-file" class="text-danger"></sub>
+
+                        <p class="text-info" id="editFileName"></p>
+                        <button class="btn btn-outline-danger btn-sm"
+                            onclick="document.getElementById('edit-product-file').click()">Upload</button>
+                    </div>
+                    <p id="errormsg" class="text-center text-primary"></p>
+                    <hr>
+                    <div class="text-center">
+                        <button type="button" onclick="editProduct()" class="btn btn-light mx-4">OK</button>
+                        <button id="editCancelBtn" type="button" class="btn btn-danger mx-4"
+                            data-dismiss="modal">Cancel</button>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+
+    </div>
+    <script src="./js/main.js"></script>
+</body>
+
+</html>

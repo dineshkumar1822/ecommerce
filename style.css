@@ -1,0 +1,160 @@
+body {
+  color: #0a0a0a;
+}
+.section-head h2 {
+  padding: 0px;
+  margin: 8px 0px;
+  font-weight: 600;
+  color: #0a0a0a;
+}
+.section-head button {
+  background-image: linear-gradient(to right,#f77656,#ea6158,#f94e55,#f94659);
+  border: 0px;
+  margin: 12px 0px;
+  padding: 6px 16px;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 15px;
+  float: right;
+}
+
+.left-menu {
+  color: #0a0a0a;
+}
+.left-menu button {
+  background-image: linear-gradient(to right,#f77656,#ea6158,#f94e55,#f94659);
+  border: 0px;
+  margin: 12px 0px;
+  padding: 6px 16px;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 15px;
+  box-shadow: 4px 8px cornsilk;
+}
+.left-menu h3 {
+  font-size: 15px;
+  color: #5c656a;
+}
+
+.left-menu-2 {
+  height: 200px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.left-menu b {
+  color: #5c656a;
+  font-weight: 600;
+  font-size: 0.9em;
+  text-transform: uppercase;
+}
+
+.left-menu-2 img {
+  width: 100%;
+  object-fit: contain;
+}
+.left-menu-2 h6 {
+  font-weight: 300;
+}
+
+.left-menu-2 section {
+  border-bottom: 1px solid #ccc;
+}
+
+.menu-list {
+  margin: 8px 0px;
+  background: #f7f8fa;
+  border-radius: 4px;
+}
+
+.menu-list p {
+  font-weight: 600;
+  font-size: 0.9em;
+  border-bottom: 1px solid #ddd;
+  padding: 8px 16px;
+}
+
+.product-list img {
+  height: 180px;
+  margin: 8px 0px;
+  width: 100%;
+  object-fit: contain;
+}
+
+.product-list span {
+  font-size: 0.8em;
+}
+
+.product-list select {
+  float: right;
+}
+
+.card-body h5 {
+  color: #000;
+}
+
+.slidecontainer {
+  width: 100%;
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 8px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  background: #eee;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  background: #eee;
+  cursor: pointer;
+}
+
+.rating i {
+  color: gold;
+}
+
+.popup-close-btn {
+  color: #fff;
+  border: 0px;
+  background-color: #dc3545;
+  border-radius: 50%;
+  position: absolute;
+  top: -10px;
+  right: -10px;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.selected-category {
+  background-color: blue;
+  color: #fff;
+  cursor: pointer;
+}
+
+
+.box-shadow{
+  box-shadow: 0px 3px 3px -1px rgba(0,0,0,0.45);
+-webkit-box-shadow: 0px 3px 3px -1px rgba(0,0,0,0.45);
+-moz-box-shadow: 0px 3px 3px -1px rgba(0,0,0,0.45);
+}
